@@ -6,7 +6,7 @@ typedef char* (*encryption_func)(char*, int);
 typedef char* (*decryption_func)(char*, int);
 
 int main() {
-    void* handle = dlopen("./libcaesar.so", RTLD_LAZY);
+    void* handle = dlopen("/Users/ksenia/CLionProjects/caesar-encryption/libcaesar.so", RTLD_LAZY);
     if (!handle) {
         fprintf(stderr, "Error: %s\n", dlerror());
         return 1;
