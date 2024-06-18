@@ -21,4 +21,25 @@ extern "C" {
         encryptedText[len] = '\0';
         return encryptedText;
     }
+
+    char* decryption(char *encryptedText, int key) {
+        int len = strlen(encryptedText);
+        char* decryptedText = (char*)malloc(len + 1);
+
+        for (int i = 0; i < len; i++) {
+            char character = encryptedText[i];
+
+            if (isalpha(character)) {
+                if (isupper(character)) {
+                    decryptedText[i] = (character - 'A' - key + 26) % 26 + 'A';
+                } else {
+                    decryptedText[i] = (character - 'a' - key + 26) % 26 + 'a';
+                }
+            } else {
+                decryptedText[i] = character;
+            }
+        }
+        decryptedText[len] = '\0';
+        return decryptedText;
+    }
 }
