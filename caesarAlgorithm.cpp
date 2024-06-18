@@ -5,6 +5,11 @@ extern "C" {
         int len = strlen(startText);
         char* encryptedText = (char*)malloc(len + 1);
 
+        key = key % 26;
+        if (key < 0) {
+            key += 26;
+        }
+
         for (int i = 0; i < len; i++) {
             char character = startText[i];
 
@@ -25,6 +30,11 @@ extern "C" {
     char* decryption(char *encryptedText, int key) {
         int len = strlen(encryptedText);
         char* decryptedText = (char*)malloc(len + 1);
+
+        key = key % 26;
+        if (key < 0) {
+            key += 26;
+        }
 
         for (int i = 0; i < len; i++) {
             char character = encryptedText[i];
